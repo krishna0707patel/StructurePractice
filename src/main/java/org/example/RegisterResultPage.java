@@ -10,6 +10,6 @@ public class RegisterResultPage extends Utils{
         waitForUrlToBe("https://demo.nopcommerce.com/registerresult/1?returnUrl=/", 20);
 
 
-         Assert.assertEquals(getTextFromElement(By.className("ico-register")),"Your registration completed successfully ","Successfully registered");
+         Assert.assertEquals(getTextFromElement(By.className("result")),"Your registration completed successfully ","UnSuccessfully registered");
     }
 }
