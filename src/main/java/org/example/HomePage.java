@@ -17,6 +17,6 @@ public class HomePage extends Utils {
 
     // to verify register button
     public void verifyRegisterButtonPresent() {
-        Assert.assertEquals(getTextFromElement(By.className("ico-register")), "Register", "Register button id registered");
+        Assert.assertEquals(getTextFromElement(By.className("ico-register")), "register", "Register button id registered");
     }
 }
