@@ -10,17 +10,37 @@ public class TestSuit extends BaseTest {
     //creating object for register result page
     RegisterResultPage registerResultPage = new RegisterResultPage();
 
-    @Test
+    // creating object for electronicPage
+    ElectronicPage electronicPage = new ElectronicPage();
 
-    // to verify register button om homepage
+    // creating object for cameraPhotoPage
+    CameraPhotoPage cameraPhotoPage = new CameraPhotoPage();
+
+    // creating object for newsDetailComment
+
+    NewsDetailComment newsDetailComment = new NewsDetailComment();
+
+    // creating object for macBookEmailAFriend
+
+    MacBookEmailAFriend macBookEmailAFriend = new MacBookEmailAFriend();
+
+    FaceBook faceBook = new FaceBook();
+
+
+    // create @Test annotation
+    @Test
+    // make a new method
     public void verifyRegisterButtonIsOnHomepage() {
-    // to verify register button om homepage
+
+        // to verify register button on homepage
+
         homePage.verifyRegisterButtonPresent();
 
     }
 
-
+    // create @Test annotation
     @Test
+    // make a new method
     public void verifyUserShouldBeAbleToRegisterSuccessfully() {
         // click on register button
         homePage.clickOnRegisterButton();
@@ -35,8 +55,100 @@ public class TestSuit extends BaseTest {
         registerResultPage.verifyUserHasBeenRegisteredSuccessfully();
     }
 
-//    @Test
-//    public void userShouldAbleToReferAProductToFriend(){
-//    }
+
+    // create @Test annotation
+    @Test
+    // make a new method
+    public void verifyEachProductHasName() {
+
+        // call method from homepage
+
+        homePage.clickOnElectronics();
+
+        //
+
+        electronicPage.clickOnCameraAndPhotoPage();
+
+        cameraPhotoPage.printProductTitle();
+
+    }
+    // create @Test annotation
+    @Test
+    // make a new method
+     public void verifyCorrectCurrencySymbolDisplayedForAllProductsOnHomepage(){
+
+        // call method from homepage
+
+        homePage.clickOnCurrencyUSDollar();
+
+        // call method from homepage
+        homePage.clickOnCurrencyEuro();
+    }
+    // create @Test annotation
+    @Test
+    // make a new method
+    public void verifyUserShouldAddNewsCommentAndCommentShowAsBottomOfTheList(){
+
+        // call method from homepage
+
+        homePage.clickOnNewsComments();
+
+        // call method from news detail comment class
+        newsDetailComment.userEnterNewsDetailComment();
+
+    }
+    // create @Test annotation
+    @Test
+    // make a new method
+    public void verifyUserShouldAbleToEmailAFriendSuccessfully(){
+
+        // call method from homepage
+
+        homePage.clickOnRegisterButton();
+
+        // call method from register page class
+        registerPage.enterRegistrationDetails();
+
+        // call method from register result page
+        registerResultPage.verifyUserHasBeenRegisteredSuccessfully();
+
+        // call method from register page
+        registerPage.verifyUserShouldClickOnContinueButton();
+
+        // call method from homepage
+        homePage.clickOnAppleMacBookPro13inch();
+
+        // call method from mac book email a friend
+        macBookEmailAFriend.clickOnEmailAFriendButton();
+
+    }
+    // create @Test annotation
+    @Test
+    // make a new method
+    public void userShouldVerifyAlertPopupOnVoteButton(){
+
+        // call method from homepage
+
+        homePage.clickOnVoteButton();
+    }
+
+
+    @Test
+
+    public void UserShouldVerifyFacebookPageAndComeToMainWindow(){
+
+
+        faceBook.verifyFacebookButtonIsOnHomepage();
+
+    }
+
+
 
 }
+
+
+
+
+
+
+

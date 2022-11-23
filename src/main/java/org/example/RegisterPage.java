@@ -16,6 +16,9 @@ public class RegisterPage extends Utils {
     private By _dateOfBirthYearSelect = By.name("DateOfBirthYear");
     private By _registerSubmitButton = By.name("register-button");
 
+    private By _continueButton = By.xpath("//a[@class=\"button-1 register-continue-button\"]");
+
+
     // to verify register page
     public void verifyUserIsOnRegisterPage() {
         Assert.assertTrue(driver.getCurrentUrl().contains("register"));
@@ -45,4 +48,11 @@ public class RegisterPage extends Utils {
         clickOnElement(_registerSubmitButton);
     }
 
+
+    // make a method for verifyUserShouldClickOnContinueButton
+    public void verifyUserShouldClickOnContinueButton(){
+
+        // click on element calling private class in side the method
+        clickOnElement(_continueButton);
+    }
 }
