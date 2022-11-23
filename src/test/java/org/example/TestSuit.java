@@ -132,12 +132,14 @@ public class TestSuit extends BaseTest {
         homePage.clickOnVoteButton();
     }
 
-
+    // create @Test annotation
     @Test
+
+    // make a new method
 
     public void UserShouldVerifyFacebookPageAndComeToMainWindow(){
 
-
+        // call method from facebook
         faceBook.verifyFacebookButtonIsOnHomepage();
 
     }
