@@ -1,6 +1,8 @@
 package org.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
@@ -28,6 +30,15 @@ public class HomePage extends Utils {
     // creating private class for facebook button
 
     private By _facebookButton = By.xpath("//li[@class=\"facebook\"]");
+
+
+    private By _searchStoreField = By.id("small-searchterms");
+
+    private By _searchButton = By.xpath("//button[@type=\"submit\"]");
+    private String subCategory;
+
+    private By _nopCommerceNewReleaseDetailsButton = By.xpath("//div[@class=\"news-items\"]/div[2]/div[3]/a");
+
 
 
     // click on register button make a method
@@ -130,6 +141,70 @@ public class HomePage extends Utils {
 
 
     }
+
+    public void userShouldTypeProductNameForFindOnSearchBarButton(String productName){
+    typeText(_searchStoreField,LoadProp.getProperty("ProductName"));
+    }
+
+    public void userShouldVerifySearchButtonIsPresent(){
+        Assert.assertEquals(getTextFromElement(_searchButton),"SEARCH","SEARCH button is present on ");
+    }
+
+    public void userShouldVerifySearchButtonIsClickable(){
+        clickOnElement(_searchButton);
+    }
+
+    public void hoveringOverMainCategoryAndThenShouldBeNavigateSubcategoryPage(String category, String subCategory) {
+
+//        String bgcolourAfterHover = subCategoryLink.getCssvalue("color");
+//
+//        System.out.println("After hover over on sub category color = " + bgcolourAfterHover);
+//
+//        clickOnElement(By.linkText(subCategory));
+
+        WebElement categoryLink = driver.findElement(By.xpath("//ul[@class=\"top-menu notmobile\"]//a[contains(.,'"+category+"')]"));
+
+        String beforeHover = categoryLink.getCssValue("color");
+        System.out.println("Before hover over on category colour = "+ beforeHover);
+
+        Actions builder = new Actions(driver);
+        Action mouseOverCategory = builder.moveToElement(categoryLink).build();
+        mouseOverCategory.perform();
+
+        String afterHover = categoryLink.getCssValue("color");
+        System.out.println("After hover over on category colour = "+ afterHover);
+
+
+        WebElement subCategoryLink = driver.findElement(By.xpath("//ul[@class=\"top-menu notmobile\"]//a[contains(.,'"+subCategory+"')]"));
+
+        String bgColorBeforeHover = subCategoryLink.getCssValue("color");
+        System.out.println("Before hover over on sub category colour = "+ bgColorBeforeHover);
+
+        Actions builder1 = new Actions(driver);
+        Action mouseOverSubCategory = builder.moveToElement(subCategoryLink).build();
+        mouseOverCategory.perform();
+
+        String bgColorAfterHover = subCategoryLink.getCssValue("color");
+        System.out.println("After hover over on sub category colour = "+ bgColorAfterHover);
+
+        clickOnElement(By.linkText(subCategory));
+
+
+
+
+    }
+
+    public void verifyNopCommerceNewReleaseDetailsButtonClickableOnHomePage() {
+
+        // Confirm nop commerce new release have details button
+        Assert.assertEquals(getTextFromElement(_nopCommerceNewReleaseDetailsButton),"DETAILS","DETAILS button should be present");
+
+        // Click on DETAILS button (nop commerce details)
+        clickOnElement(_nopCommerceNewReleaseDetailsButton);
+
+    }
+
+
 //
 //    // make a method for click on facebook button
 //    public void clickOnFacebookButton(){

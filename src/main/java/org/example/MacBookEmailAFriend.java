@@ -30,12 +30,11 @@ public class MacBookEmailAFriend extends Utils {
 
         // using type text call private class inside the method with sendkey text
 
-        typeText(_friendEmailfield, "mayesha1212@gmail.com");
+        typeText(_friendEmailfield, LoadProp.getProperty("friendemailpart1") + getTimeStamp() + LoadProp.getProperty("friendemailpart2"));
 
         // using type text call private class inside the method with sendkey text
 
-        typeText(_personalmessage, "This product is fabulous product and i refer to you.");
-
+        typeText(_personalmessage, LoadProp.getProperty("personalmessagemacbook"));
         // using click on element call private class inside the method
 
         clickOnElement(_sendemail);

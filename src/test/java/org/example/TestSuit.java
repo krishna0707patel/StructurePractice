@@ -26,6 +26,10 @@ public class TestSuit extends BaseTest {
 
     FaceBook faceBook = new FaceBook();
 
+    SearchProductOnHomePage searchProductOnHomePage = new SearchProductOnHomePage();
+
+    NopCommerceNewReleasePage nopCommerceNewReleasePage = new NopCommerceNewReleasePage();
+
 
     // create @Test annotation
     @Test
@@ -118,7 +122,7 @@ public class TestSuit extends BaseTest {
         // call method from homepage
         homePage.clickOnAppleMacBookPro13inch();
 
-        // call method from mac book email a friend
+        // call method from Mac Book email a friend
         macBookEmailAFriend.clickOnEmailAFriendButton();
 
     }
@@ -142,6 +146,37 @@ public class TestSuit extends BaseTest {
         // call method from facebook
         faceBook.verifyFacebookButtonIsOnHomepage();
 
+    }
+
+
+    @Test
+    public void userShouldAbleToSeeColourDifferenceBeforeHoveringAndAfterHovering(){
+
+        homePage.hoveringOverMainCategoryAndThenShouldBeNavigateSubcategoryPage("Computers","Desktops");
+
+
+    }
+
+
+    @Test
+
+    public void userShouldAbleToFindProductsOnSearchBar(){
+
+        homePage.userShouldTypeProductNameForFindOnSearchBarButton(LoadProp.getProperty("ProductName"));
+
+
+        homePage.userShouldVerifySearchButtonIsPresent();
+
+        homePage.userShouldVerifySearchButtonIsClickable();
+
+        SearchProductOnHomePage.eachAndEveryProductHaveProductNameContains(LoadProp.getProperty("productName"));
+    }
+
+    @Test
+    public void toVerifyUserShouldBeAbleToClickOnNopCommerceNewReleaseDetailsButtonAndUserShouldBeAbleToFillTitleAndCommentAndSuccessfullySubmit()
+    {
+        homePage.verifyNopCommerceNewReleaseDetailsButtonClickableOnHomePage();
+        nopCommerceNewReleasePage.enterDetailsOnNopCommerceNewReleasePage();
     }
 
 

@@ -24,26 +24,27 @@ public class RegisterPage extends Utils {
         Assert.assertTrue(driver.getCurrentUrl().contains("register"));
     }
 
-    public void enterRegistrationDetails() {
-        // wait for element to be click on register and wait for the 15 second before that going on next page
+    public void enterRegistrationDetails()
+    {
+        // wait for element to be Click on register and wait for the 15 second before that going on next page
         waitForElementToBeClickable(_registerSubmitButton, 15);
 
         // enter first name
-        typeText(_firstNameField, "kristy");
+        typeText(_firstNameField, LoadProp.getProperty("firstname"));
         // enter last name
-        typeText(_lastNameField, "shah");
+        typeText(_lastNameField, LoadProp.getProperty("lastname"));
         // enter email using get time stamp method
-        typeText(_emailField, "kristyshah" + getTimeStamp() + "@yahoo.com");
+        typeText(_emailField,  LoadProp.getProperty("emailpart1")+ getTimeStamp() + LoadProp.getProperty("emailpart2"));
         // enter date of birthday date
-        selectByText(_dateOfBirthDaySelect, "20");
+        selectByText(_dateOfBirthDaySelect, LoadProp.getProperty("birthday"));
         // enter date of birth month
-        selectByText(_dateOfBirthMonthSelect, "December");
+        selectByText(_dateOfBirthMonthSelect, LoadProp.getProperty("birthmonth"));
         // enter date of birth year
-        selectByText(_dateOfBirthYearSelect, "1999");
+        selectByText(_dateOfBirthYearSelect, LoadProp.getProperty("birthyear"));
         // enter password field
-        typeText(_passwordField, "kri99kri");
+        typeText(_passwordField, LoadProp.getProperty("password"));
         // enter confirm password field
-        typeText(_confirmPasswordField, "kri99kri");
+        typeText(_confirmPasswordField, LoadProp.getProperty("confirmpassword"));
         //click on register submit button
         clickOnElement(_registerSubmitButton);
     }
