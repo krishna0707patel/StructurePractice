@@ -179,8 +179,6 @@ public class TestSuit extends BaseTest {
         nopCommerceNewReleasePage.enterDetailsOnNopCommerceNewReleasePage();
     }
 
-
-
 }
 
 

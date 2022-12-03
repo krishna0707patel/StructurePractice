@@ -205,6 +205,12 @@ public class HomePage extends Utils {
     }
 
 
+
+    public void clickOnCategoryPage(String category){
+        clickOnElement(By.linkText(category));
+    }
+
+
 //
 //    // make a method for click on facebook button
 //    public void clickOnFacebookButton(){

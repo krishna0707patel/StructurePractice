@@ -30,11 +30,17 @@ public class BaseTest extends Utils {
     // put inbuilt parameter
     public void teardown(ITestResult result) {
 
+
+
+
         // using if condition
-        // using not equal to "!"   if assert is fail then it will take a screen shot
+        // using not equal to "!"   if assert is fail then it will take a screenshot
         if (!result.isSuccess()){
             takeScreenshot(result.getName());
         }
+
+
+
         // for close the browser
         driverManager.closeBrowser();
     }

@@ -7,6 +7,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.io.File;
 import java.io.IOException;
@@ -102,7 +103,7 @@ public class Utils extends BasePage {
 
         //Move image file to new destination
 
-        File DestFile = new File("src/main/ScreenShot" + screenShotName + getTimeStamp() + ".jpg");
+        File DestFile = new File("src/main/ScreenShot/" + screenShotName + getTimeStamp() + ".jpg");
 
         //Copy file at destination
         // using try and catch
@@ -121,6 +122,12 @@ public class Utils extends BasePage {
     public void clickOkOnAlert() {
         driver.switchTo().alert().accept();
     }
+
+
+    public static void assertCurrentURL(String categoryName){
+        Assert.assertTrue(driver.getCurrentUrl().contains(categoryName));
+    }
+
 
 
 }
